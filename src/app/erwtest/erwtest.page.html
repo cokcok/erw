@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>erwtest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <label>
+  <input type="file" (change)="selectFile($event)">
+</label>
+<button [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+</ion-content>

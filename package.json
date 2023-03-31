@@ -1,8 +1,8 @@
 {
   "name": "erw",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "RAOT",
+  "homepage": "https://www.raot.co.th/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
-  },
+  }, 
   "private": true,
   "dependencies": {
     "@angular/common": "^15.0.0",
@@ -20,7 +20,10 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@ionic/angular": "^6.1.9",
+    "bootstrap": "^5.2.3",
     "ionicons": "^6.0.3",
+    "ngx-bootstrap": "^4.3.0",
+    "ngx-uploader": "^11.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -30,8 +33,8 @@
     "@angular-eslint/builder": "^15.0.0",
     "@angular-eslint/eslint-plugin": "^15.0.0",
     "@angular-eslint/eslint-plugin-template": "^15.0.0",
-    "@angular-eslint/template-parser": "^15.0.0",
     "@angular-eslint/schematics": "^15.0.0",
+    "@angular-eslint/template-parser": "^15.0.0",
     "@angular/cli": "^15.0.0",
     "@angular/compiler": "^15.0.0",
     "@angular/compiler-cli": "^15.0.0",

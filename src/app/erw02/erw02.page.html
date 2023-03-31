@@ -1,0 +1,246 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+    <ion-title>แนบเอกสารเข้าร่วมโครงการ</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="submitForm()">
+        <ion-icon slot="icon-only" src="./assets/icons/save.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <input type="file" (change)="onSelectFile($event)">
+  <button [disabled]="!selectedFiles" (click)="upload()">Upload</button> -->
+
+  <form [formGroup]="ionicForm" novalidate>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label class="showlabel" position="floating">ชื่อ (บริษัท/หจก.)</ion-label>
+            <ion-input formControlName="companyname" type="text"  ></ion-input>
+            <span class="error" *ngIf="isSubmitted && errorControl.companyname.errors?.required">
+              กรุณาระบุ ชื่อ (บริษัท/หจก.)
+            </span> 
+          </ion-item>
+        </ion-col>       
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file">1. ใบคำขอสมัครเข้าร่วมโครงการฯ</label>
+              <input 
+                  formControlName="file"
+                  id="file" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource')">
+              <span class="error" *ngIf="isSubmitted && errorControl.fileSource.errors?.required">
+                กรุณาแนบใบคำขอสมัครเข้าร่วมโครงการฯ
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file1">2. เอกสารแนบ 1</label>
+              <input 
+                  formControlName="file1"
+                  id="file1" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource1')">
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file2">3. สำเนาบัตรประชาชนของผู้มีอำนาจลงชื่อแทนนิติบุคคล </label> 
+              <label class="warning" > (กรณีมอบอำนาจ ใช้หนังสือมอบอำนาจ และสำเนาบัตรประจำตัวประชาชนของผู้มอบอำนาจและผู้รับมอบอำนาจพร้อมทั้งติดอากรแสตมป์ 30 บาท)</label> 
+              <input 
+                  formControlName="file2"
+                  id="file2" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource2')">
+              <span class="error" *ngIf="isSubmitted && errorControl.file2.errors?.required">
+                กรุณาแนบ สำเนาบัตรประชาชนของผู้มีอำนาจลงชื่อแทนนิติบุคคล
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file3">4. สำเนาหนังสือรับรองการจดทะเบียนวัตถุประสงค์ <span class="warning" > (ที่นายทะเบียนรับรองไว้
+                ไม่เกิน 3 เดือน)</span>  </label>
+  
+              <input 
+                  formControlName="file3"
+                  id="file3" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource3')">
+              <span class="error" *ngIf="isSubmitted && errorControl.file3.errors?.required">
+                กรุณาแนบ สำเนาหนังสือรับรองการจดทะเบียนวัตถุประสงค์ 
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file4">5. หนังสือบริคณห์สนธิ  <span class="warning" > (ที่นายทะเบียนรับรองไว้
+                ไม่เกิน 3 เดือน)</span> </label>
+              <input 
+                  formControlName="file4"
+                  id="file4" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource4')">
+              <span class="error" *ngIf="isSubmitted && errorControl.file4.errors?.required">
+                กรุณาแนบ หนังสือบริคณห์สนธิ  
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file5">6. สำเนาใบอนุญาตประกอบกิจการโรงงาน (ร.ง.๔) หรือหนังสือรับรองจากสำนักงานอุตสาหกรรมจังหวัด <span class="warning" > (แล้วแต่กรณี)</span>  </label>
+              <input 
+                  formControlName="file5"
+                  id="file5" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource5')">
+              <span class="error" *ngIf="isSubmitted && errorControl.file5.errors?.required">
+                กรุณาแนบ สำเนาใบอนุญาตประกอบกิจการโรงงาน (ร.ง.๔) หรือหนังสือรับรองจากสำนักงานอุตสาหกรรมจังหวัด  
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file6">7. สำเนาหนังสือสำคัญแสดงกรรมสิทธิ์ในที่ดิน  <span class="warning" > (กรณีเป็นพื้นที่ของบริษัท)</span> </label>
+              <input 
+                  formControlName="file6"
+                  id="file6" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource6')">             
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file7">8. สำเนาสัญญาเช่า (ต้องระบุชื่อบริษัทในสัญญาเช่า) พร้อมสำเนาเอกสารในการเช่า  </label>
+              <input 
+                  formControlName="file7"
+                  id="file7" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource7')">             
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file8">9. แผนที่ตั้งโรงงาน สถานที่จัดเก็บ ความจุของโกดังที่จัดเก็บสต็อกไม้ยาง และผลิตภัณฑ์
+                  </label>
+              <input 
+                  formControlName="file8"
+                  id="file8" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource8')">
+              <span class="error" *ngIf="isSubmitted && errorControl.file8.errors?.required">
+                แผนที่ตั้งโรงงาน สถานที่จัดเก็บ ความจุของโกดังที่จัดเก็บสต็อกไม้ยางและผลิตภัณฑ์
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file9">10. กำลังการผลิตของโรงงานต่อปี </label>
+              <input 
+                  formControlName="file9"
+                  id="file9" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource9')">
+              <span class="error" *ngIf="isSubmitted && errorControl.file9.errors?.required">กำลังการผลิตของโรงงานต่อปี
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item> 
+            <div class="form-group">
+              <label for="file10">11. วงเงินสินเชื่อเงินทุนหมุนเวียนในการรับซื้อไม้ยาง และวงเงินสินเชื่อเกี่ยวข้องกับการดำเนินงานกิจการไม้ยางและผลิตภัณฑ์ที่ใช้ในการขยายกำลังการผลิต ปรับเปลี่ยนเครื่องจักรการผลิต ณ ที่ตั้งเดิมหรือที่ตั้งใหม่ เพื่อใช้ในการประกอบกิจการ  (เอกสารแนบ 2) <span class="warning" > (ย้อนหลัง 3 ปี)</span> </label>
+              <input 
+                  formControlName="file10"
+                  id="file10" 
+                  type="file" 
+                  class="form-control"
+                  accept="application/pdf"
+                  (change)="onFileChange($event,'fileSource10')">
+              <span class="error" *ngIf="isSubmitted && errorControl.file10.errors?.required">เอกสารวงเงินสินเชื่อเงินทุนหมุนเวียนในการรับซื้อไม้ยางฯ
+              </span>
+          </div>
+          </ion-item>         
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <label class="error"> ** หมายเหตุ กรณีไม่สามารถอัพโหลดเอกสารได้ สามารถสแกนเอกสารประกอบการสมัครเข้าร่วมโครงการส่งไปยัง อีเมล์ special.raot@gmail.com ตามระยะเวลาที่กำหนด </label>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-row  >
+    <ion-label class="appversion"> App Version : {{versionNumber}} </ion-label>
+  </ion-row>
+
+</ion-content>

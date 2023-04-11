@@ -7,7 +7,7 @@ import { Platform } from '@ionic/angular';
 })
 export class ConfigService {
   public ip_appcen = 'https://appcen01.raot.co.th/ws_erw/'; // production
-  public ip: string = "http://10.99.20.23/erw/";
+  public ip: string = "http://api.raot.co.th/erw/";
   isLoading = false;
   constructor( private loadingController: LoadingController, private alertCtrl: AlertController) { }
 
